@@ -8,7 +8,7 @@ import Cart from './screens/Cart';
 const App = () => {
   return (
     <div>
-      <h1>Simon's Sweet Shop</h1>
+      <h1>Simon's</h1>
       <Router>
         <Switch>
           <Route exact path="/" component={Order} />
