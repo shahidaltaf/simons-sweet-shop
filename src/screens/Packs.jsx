@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Container, Button, Card } from 'react-bootstrap';
 
 import { addPackItem, removePackItem, editPackItem } from '../store/actions';
 import PackItem from '../components/PackItem';
@@ -20,19 +20,31 @@ const Packs = () => {
     }
 
     return <>
-        <Header />
-        <p><Link to="/cart">View cart</Link></p>
-        <h2>Pack Sizes</h2>
-        <p>Add, edit or remove pack sizes below.</p>
-        {
-            packs.map(pack => <PackItem 
-                key={pack.id} 
-                pack={pack} 
-                editHandler={(amount) => { dispatch(editPackItem(amount, pack.id))}}
-                removeHandler={() => { dispatch(removePackItem(pack.id))}} />)
-        }
-        <input type="number" value={newPackSize} onChange={(event) => {setNewPackSize(event.target.value)}} />
-        <button onClick={() => { handleAddPackSize() }}>Add Pack Size</button>
+        <Header cart />
+        <Container style={{ width: '25.875rem' }}>
+            <h2 className="h3 mb-4">Rhubarb &amp; Custard</h2>
+            <Card>
+                <Card.Header className="bg-secondary">
+                    <h3 className="h4 mb-0 text-center">Pack Sizes</h3>
+                </Card.Header>
+                <Card.Body>
+                    <p>Add, edit or remove pack sizes below.</p>
+                    {
+                        packs.map(pack => <PackItem
+                            key={pack.id}
+                            pack={pack}
+                            editHandler={(amount) => { dispatch(editPackItem(amount, pack.id)) }}
+                            removeHandler={() => { dispatch(removePackItem(pack.id)) }} />)
+                    }
+                    <div className="mt-4">
+                        <input className="form-control mb-4" type="number" 
+                            value={newPackSize} placeholder="Enter another pack size"
+                            onChange={(event) => { setNewPackSize(event.target.value) }} />
+                        <Button className="btn-block" variant="primary" onClick={() => { handleAddPackSize() }}>Add Pack Size</Button>
+                    </div>
+                </Card.Body>
+            </Card>
+        </Container>
     </>
 };
 

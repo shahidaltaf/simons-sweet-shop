@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Container, Button, Card } from 'react-bootstrap';
 
 import { removeBasketItem } from '../store/actions';
 import { calculatePacks, accumulatePacks } from '../utils';
 
-import BasketItem from '../components/BasketItem';
+import CartItem from '../components/CartItem';
 import Header from '../components/Header';
 
 const updateCartItemPacks = state => {
@@ -30,20 +31,24 @@ const Cart = () => {
 
     return <>
         <Header />
-        <h2>Cart</h2>
-        {
-            cartItems.length < 1 ? (
-                <p>No items in cart.</p>
-            ) : (
-                cartItems.map((item, index) => {
-                    return <BasketItem 
-                        key={item.id} 
-                        item={item} 
-                        removeHandler={() => { dispatch(removeBasketItem(item.id)) }} />
-                })
-            )
-        }
-        <button onClick={() => { history.goBack() }}>Back</button>
+        <Container style={{ width: '25.875rem' }}>
+            <h2 className="h3 mb-4">Cart</h2>
+            {
+                cartItems.length < 1 ? (
+                    <Card className="mb-4">
+                        <Card.Body><p className="mb-0">No items in cart.</p></Card.Body>
+                    </Card>
+                ) : (
+                    cartItems.map((item, index) => {
+                        return <CartItem
+                            key={item.id}
+                            item={item}
+                            removeHandler={() => { dispatch(removeBasketItem(item.id)) }} />
+                    })
+                )
+            }
+            <Button variant="primary" className="btn-block mb-4 p-2" onClick={() => { history.goBack() }}>Back</Button>
+        </Container>
     </>
 };
 

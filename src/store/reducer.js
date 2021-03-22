@@ -15,7 +15,7 @@ const initialState = {
                 'These pink and yellow sweets have a real hit of rhubarb and custard flavour - a classic combination',
                 'Hard boiled so great for sucking on and they last a long time!'
             ],
-            image: 'rhubarb-custard.png'
+            image: 'rhubarb-custard'
         }
     ],
     packs: [

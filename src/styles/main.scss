@@ -1,0 +1,17 @@
+$theme-colors: (
+    'primary': #F4CADA,
+    'secondary': #BFF3EE,
+    'tertiary': #F4CADA,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+.sss-bg-header {
+    background-color: rgba(244, 202, 218, 0.2);
+}
+
+.sss-bin-icon {
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+}
