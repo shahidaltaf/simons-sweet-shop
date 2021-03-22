@@ -6,18 +6,13 @@ import Packs from './screens/Packs';
 import Cart from './screens/Cart';
 
 const App = () => {
-  return (
-    <div>
-      <h1>Simon's</h1>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Order} />
-          <Route path="/packs" component={Packs} />
-          <Route path="/cart" component={Cart} />
-        </Switch>
-      </Router>
-    </div>
-  );
+  return (<Router>
+      <Switch>
+        <Route exact path="/" component={Order} />
+        <Route path="/packs" component={Packs} />
+        <Route path="/cart" component={Cart} />
+      </Switch>
+    </Router>);
 }
 
 export default App;

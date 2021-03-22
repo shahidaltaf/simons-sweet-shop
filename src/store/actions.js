@@ -8,4 +8,4 @@ export const addBasketItem = (item) => ({ type: ADD_BASKET_ITEM, payload: item }
 export const removeBasketItem = (id) => ({ type: REMOVE_BASKET_ITEM, payload: id });
 export const addPackItem = (item) => ({ type: ADD_PACK_ITEM, payload: item });
 export const removePackItem = (id) => ({ type: REMOVE_PACK_ITEM, payload: id });
-export const editPackItem = (id, item) => ({ type: EDIT_PACK_ITEM, payload: { id, item } });
+export const editPackItem = (amount, id) => ({ type: EDIT_PACK_ITEM, payload: { amount, id }});

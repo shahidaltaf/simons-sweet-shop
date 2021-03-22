@@ -5,10 +5,13 @@ import { useHistory } from "react-router-dom";
 import { removeBasketItem } from '../store/actions';
 import { calculatePacks, accumulatePacks } from '../utils';
 
+import BasketItem from '../components/BasketItem';
+import Header from '../components/Header';
+
 const updateCartItemPacks = state => {
-    const packValues = state.packs.map(pack => pack.quantity).sort((a, b) => a - b);
+    const packSizes = state.packs.map(pack => pack.quantity).sort((a, b) => a - b);
     const cart = state.cart.map(item => {
-        const packs = accumulatePacks(calculatePacks([], item.amount, packValues));
+        const packs = accumulatePacks(calculatePacks([], item.amount, packSizes));
 
         return {
             ...item,
@@ -26,28 +29,20 @@ const Cart = () => {
     const cartItems = useSelector(updateCartItemPacks);
 
     return <>
+        <Header />
         <h2>Cart</h2>
         {
             cartItems.length < 1 ? (
                 <p>No items in cart.</p>
             ) : (
                 cartItems.map((item, index) => {
-                    return <div key={index} style={{ border: '1px solid #ccc' }}>
-                        <p>[image {item.image}]</p>
-                        {
-                            // @todo: sweet image
-                        }
-                        <p>{item.name} x {item.amount}</p>
-                        <button onClick={() => { dispatch(removeBasketItem(item.id)) }}>Remove</button>
-                        {
-                            item.packs.map((pack, i) => <p key={i}>{pack.quantity} x {pack.amount}</p>)
-                        }
-                        <p>Total = {item.total}</p>
-                    </div>
+                    return <BasketItem 
+                        key={item.id} 
+                        item={item} 
+                        removeHandler={() => { dispatch(removeBasketItem(item.id)) }} />
                 })
             )
         }
-
         <button onClick={() => { history.goBack() }}>Back</button>
     </>
 };

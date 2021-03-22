@@ -1,13 +1,12 @@
-export const calculatePacks = (order, quantityRequired, packs) => {
+export const calculatePacks = (order, quantityRequired, packSizes) => {
     const packOrder = order;
 
-    for (let i = 0; i < packs.length; i++) {
-        const previousPack = packs[i === 0 ? 0 : i - 1];
-        const currentPack = packs[i];
-        const nextPack = packs[i === packs.length - 1 ? 0 : i + 1];
-        const lastPack = packs[packs.length - 1];
+    for (let i = 0; i < packSizes.length; i++) {
+        const previousPack = packSizes[i === 0 ? 0 : i - 1];
+        const currentPack = packSizes[i];
+        const nextPack = packSizes[i === packSizes.length - 1 ? 0 : i + 1];
+        const lastPack = packSizes[packSizes.length - 1];
         const remainder = quantityRequired - currentPack;
-
 
         if (quantityRequired <= currentPack) {
             packOrder.push(currentPack);
@@ -19,14 +18,14 @@ export const calculatePacks = (order, quantityRequired, packs) => {
                     break;
                 } else {
                     packOrder.push(currentPack);
-                    calculatePacks(packOrder, remainder, packs);
+                    calculatePacks(packOrder, remainder, packSizes);
                     break;
                 }
             }
 
             if (currentPack === lastPack) {
                 packOrder.push(currentPack);
-                calculatePacks(packOrder, remainder, packs);
+                calculatePacks(packOrder, remainder, packSizes);
                 break;
             }
         }

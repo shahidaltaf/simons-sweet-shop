@@ -62,13 +62,33 @@ const reducer = (state = initialState, action) => {
             }
 
         case ADD_PACK_ITEM:
-            return state;
+            return {
+                ...state,
+                packs: [
+                    ...state.packs,
+                    action.payload
+                ]
+            };
 
         case REMOVE_PACK_ITEM:
-            return state;
+            const updatedPackSizes = state.packs.filter(item => item.id !== action.payload);
+            return {
+                ...state,
+                packs: updatedPackSizes
+            };
 
         case EDIT_PACK_ITEM:
-            return state;
+            const otherPacks = state.packs.filter(item => item.id !== action.payload.id);
+            return {
+                ...state,
+                packs: [
+                    ...otherPacks,
+                    {
+                        id: action.payload.id,
+                        quantity: action.payload.amount
+                    }
+                ]
+            };
 
         default:
             return state;

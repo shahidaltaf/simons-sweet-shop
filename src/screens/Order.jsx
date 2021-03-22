@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 import { addBasketItem } from '../store/actions';
+import Header from '../components/Header';
 
 const Order = () => {
     const [orderAmount, setOrderAmount] = useState('');
@@ -27,10 +28,10 @@ const Order = () => {
     }
 
     return <>
-        <h2>Order</h2>
-        <h3>{sweet.name}</h3>
+        <Header />
         <p>[{sweet.image}]</p>
-        <h4>Description</h4>
+        <h2>{sweet.name}</h2>
+        <h3>Description</h3>
         {
             sweet.description.map((item, index) => <p key={index}>{item}</p>)
         }
@@ -42,8 +43,8 @@ const Order = () => {
             setError(null);
             setOrderAmount(event.target.value)
         }} /> 
-        <button onClick={addToCart}>Add to Cart</button>
-        <p>----</p>
+        <p><button onClick={addToCart}>Add to Cart</button></p>
+
         <p><Link to="/packs">Packs</Link></p>
         <p><Link to="/cart">View cart</Link></p>
     </>
