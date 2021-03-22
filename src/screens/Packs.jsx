@@ -21,7 +21,7 @@ const Packs = () => {
 
     return <>
         <Header cart />
-        <Container style={{ width: '25.875rem' }}>
+        <Container>
             <h2 className="h3 mb-4">Rhubarb &amp; Custard</h2>
             <Card>
                 <Card.Header className="bg-secondary">

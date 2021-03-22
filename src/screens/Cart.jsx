@@ -31,7 +31,7 @@ const Cart = () => {
 
     return <>
         <Header />
-        <Container style={{ width: '25.875rem' }}>
+        <Container>
             <h2 className="h3 mb-4">Cart</h2>
             {
                 cartItems.length < 1 ? (

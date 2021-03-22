@@ -31,7 +31,7 @@ const Order = () => {
 
     return <>
         <Header admin />
-        <Container style={{ width: '25.875rem' }}>
+        <Container>
             <div className="justify-content-center align-items-center">
                 <h2 className="h3 mb-4">{sweet.name}</h2>
                 <Card className="mb-4">
@@ -47,10 +47,13 @@ const Order = () => {
                         }
                         <div className="d-flex justify-content-between align-items-center">
                             <label className="font-weight-bold">Select Amount</label>
-                            <input className="form-control w-50" type="number" value={orderAmount} onChange={event => {
-                                setError(null);
-                                setOrderAmount(event.target.value)
-                            }} />
+                            <input 
+                                className={`form-control w-50 ${error && 'is-invalid'}`} type="number" value={orderAmount} 
+                                placeholder="Enter amount"
+                                onChange={event => {
+                                    setError(null);
+                                    setOrderAmount(event.target.value)
+                                }} />
                         </div>
                     </Card.Body>
                 </Card>
