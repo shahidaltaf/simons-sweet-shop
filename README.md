@@ -6,7 +6,7 @@ You can see the app live temporarily at https://shahidaltaf.com
 
 ## Getting started
 
-After cloning this repo, navigate to the root director and run `yarn` to install all the node module dependencies. Once complete, run `yarn start`. This will launch automatically in your default browser.
+After cloning this repo, navigate to the root directory and run `yarn` to install all the node module dependencies. Once complete, run `yarn start`. This will launch automatically in your default browser.
 
 ## Features
 
@@ -16,7 +16,7 @@ After cloning this repo, navigate to the root director and run `yarn` to install
 - UI built using `react-bootstrap` for styling
 - Made with `create-react-app`
 
-# Backlog
+## Backlog
 
 - Additional products
 - Unit testing
