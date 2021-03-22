@@ -1,12 +1,12 @@
 # Simon's Sweet Shop
 
-A simple React application for a wholesale confectionary .
+A simple React application for a confectionery wholesaler.
 
-You can see the app live temporarily at https://shahidaltaf.com 
+You can see the app temporarily live at https://shahidaltaf.com 
 
 ## Getting started
 
-After cloning this repo, navigate to the root directory and run `yarn` to install all the node module dependencies. Once complete, run `yarn start`. This will launch automatically in your default browser.
+After cloning this repo, navigate to the root directory and run `yarn` to install all the node module dependencies. Once complete, run `yarn start`. This will automatically launch the app in your default browser.
 
 ## Features
 
