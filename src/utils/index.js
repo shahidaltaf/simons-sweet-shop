@@ -34,21 +34,12 @@ export const calculatePacks = (order, quantityRequired, packSizes) => {
     return packOrder;
 }
 
-export const accumulatePacks = (packs) => {
-    const accumulatedPacks = [];
-
-    packs.forEach(pack => {
-        const exists = accumulatedPacks.find(item => item.amount === pack);
-
-        if (exists) {
-            exists.quantity = exists.quantity + 1;
-        } else {
-            accumulatedPacks.push({
-                amount: pack,
-                quantity: 1
-            })
-        }
-    });
-
+export const accumulatePacks = (packs) => Object.values(packs.reduce((accumulatedPacks, amount) => {
+    accumulatedPacks[amount] = accumulatedPacks[amount] ? {
+        ...accumulatedPacks[amount],
+        ...{ amount, quantity: accumulatedPacks[amount].quantity + 1 }
+    } : { amount, quantity: 1 }
+    
     return accumulatedPacks;
-}
+}, {}));
+
